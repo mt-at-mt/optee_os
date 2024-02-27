@@ -1082,10 +1082,14 @@ static TEE_Result tee_rpmb_write_and_verify_key(void)
 {
 	TEE_Result res;
 
+// ignore securemon state for testkey
+#ifdef CFG_RPMB_TESTKEY
+#else
 	if (!plat_rpmb_key_is_ready()) {
 		DMSG("RPMB INIT: platform indicates RPMB key is not ready");
 		return TEE_ERROR_BAD_STATE;
 	}
+#endif
 
 	DMSG("RPMB INIT: Writing Key value:");
 	DHEXDUMP(rpmb_ctx->key, RPMB_KEY_MAC_SIZE);
