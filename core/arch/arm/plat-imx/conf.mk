@@ -532,7 +532,7 @@ $(call force,CFG_SECURE_TIME_SOURCE_CNTPCT,y)
 
 CFG_CRYPTO_WITH_CE ?= y
 
-supported-ta-targets = ta_arm64
+supported-ta-targets = ta_arm64 ta_arm32
 endif
 
 CFG_TZDRAM_SIZE ?= 0x01e00000
